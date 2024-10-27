@@ -1,5 +1,4 @@
 import { COLORS, FONT_SIZE } from "../../constants/theme.js";
-import icon from "../../constants/icon.js";
 
 export const  styles = {
     container : {
