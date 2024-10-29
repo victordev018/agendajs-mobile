@@ -9,7 +9,7 @@ function Button(props){
 
     return <TouchableOpacity
             style={ [styles.btn, props.theme == "danger" ? styles.danger : styles.primary] }
-            onPress={cliclAlert} 
+            onPress={props.onPress} 
             >    
             <Text style = {styles.text}
                 > {props.text} 

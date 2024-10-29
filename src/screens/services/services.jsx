@@ -5,13 +5,25 @@ import icons from "../../constants/icon.js";
 import Service from "../../components/service/service.jsx";
 
 
-function Services() {
+function Services(props) {
+
+    // const name = props.route.params.name
+    const {id_doctor, name, specialty, iconDoctor} = props.route.params;
+
+    function ClickSchedule(id_service){
+        // open schedule screen
+        props.navigation.navigate("schedule", {
+            id_doctor,
+            id_service
+        });
+    }
+
     return <View style = {styles.container}>
 
         <View style = {styles.banner}>
-            <Image source = {icons.female}/>
-            <Text style = {styles.name} >Heber</Text>
-            <Text style = {styles.specialty}>Cardiologista</Text>
+            <Image source = {iconDoctor == "M"?icons.female:icons.male}/>
+            <Text style = {styles.name} >{name}</Text>
+            <Text style = {styles.specialty}>{specialty}</Text>
 
         </View>
 
@@ -19,7 +31,12 @@ function Services() {
                   keyExtractor={(serv) => serv.id_service} 
                   showsVerticalScrollIndicator = {false}
                   renderItem={ ({item}) => {
-                        return <Service description={item.description} price={item.price} />
+                        return <Service 
+                        id_service={item.id_service}
+                        description={item.description} 
+                        price={item.price} 
+                        onPress={ClickSchedule}
+                        />
                   } }
                   />
 

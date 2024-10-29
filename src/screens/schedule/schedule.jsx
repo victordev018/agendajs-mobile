@@ -10,10 +10,18 @@ LocaleConfig.locales["pt-br"] = ptBR;
 LocaleConfig.defaultLocale = "pt-br";
 
 
-function Schedule(){
+function Schedule(props){
+
+    // data of the doctor and service to confirm schedule
+    const {id_doctor, id_service} = props.route.params;
     
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
     const [selectedHour, setSelectedHour] = useState("");
+
+    // function to confirm schedule
+    function ClickBooking(){
+        console.log(id_service, id_doctor, selectedDate, selectedHour);
+    }
 
     return <View style = {styles.container}>
 
@@ -50,7 +58,7 @@ function Schedule(){
         
 
         <View>
-            <Button text = "Confirmar Reserva" />
+            <Button text = "Confirmar Reserva" onPress={ClickBooking}/>
         </View>
 
     </View>
