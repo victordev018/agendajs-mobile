@@ -11,6 +11,7 @@ const Tab = createBottomTabNavigator();
 function Main(){
     return <Tab.Navigator>
                 <Tab.Screen name = "Home" component={AbaHome} options={{
+                    //unmountOnBlur : true,   // reassemble the screen
                     headerTitleAlign : "center",
                     headerTitle : () =>{
                         return <Image source={icon.logo} style = {{width : 125,height : 29,}}/>;
@@ -28,6 +29,7 @@ function Main(){
                 }}/>
 
                 <Tab.Screen name = "Calendar" component={AbaCalendar} options={{
+                    unmountOnBlur : true,   // reassemble the screen
                     headerTitleAlign : "center",
                     headerTitle : () => {
                         return <Text style = {{fontSize: FONT_SIZE.xl, color : COLORS.blue}}>Minhas Reservas</Text>;
@@ -45,6 +47,7 @@ function Main(){
                 }}/>
 
                 <Tab.Screen name = "Profile" component={AbaProfile} options={{
+                    unmountOnBlur : true,   // reassemble the screen
                     headerTitleAlign : "center",
                     headerTitle : () => {
                         return <Text style = {{fontSize: FONT_SIZE.xl, color : COLORS.blue}}>Meu Perfil</Text>;

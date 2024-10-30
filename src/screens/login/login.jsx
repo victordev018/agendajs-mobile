@@ -2,10 +2,13 @@ import { Image, TextInput, View, Text, TouchableOpacity, Alert} from "react-nati
 import Button from "../../components/button/button.jsx"
 import icon from "../../constants/icon.js"
 import {styles} from "./login.style.js";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import api from "../../constants/api.js"
+import { AuthContext } from "../../context/auth.js";
 
 function Login(props){
+
+    const {setUser} = useContext(AuthContext);
 
     // get values of the email and password with hooks
     const [email, setEmail] = useState("");
@@ -14,14 +17,16 @@ function Login(props){
     // function to login
     async function ExecuteLogin(){
         try{
-            console.log(email, password);
+            //console.log(email, password);
             const response = await api.post("/users/login", {
                 email,
                 password
             });
 
             if (response.data){
-                console.log(response.data)
+                // setting token jwt
+                api.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
+                setUser(response.data);
             }
         }catch(error){
             if (error.response?.data.error)
