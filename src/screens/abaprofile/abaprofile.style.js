@@ -7,6 +7,9 @@ export const styles = {
         backgroundColor : COLORS.white,
         paddingTop : 12
     },
+    profile : {
+        flex : 1
+    },
     item : {
         borderWidth : 1,
         borderColor : COLORS.gray4,
@@ -22,5 +25,9 @@ export const styles = {
     text : {
         fontSize : FONT_SIZE.md,
         color : COLORS.gray1,
+    },
+    logout : {
+        marginBottom : 10,
+        padding : 10
     }
 }
